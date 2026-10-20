@@ -1,0 +1,19 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node (prototype)
+node_modules/
+dist/
+.env
+.env.*
+
+# Local Claude settings per peserta
+.claude/settings.local.json
+
+# Instructor-only material must never live in this repo
+answer-key/
+*answer-key*
+
