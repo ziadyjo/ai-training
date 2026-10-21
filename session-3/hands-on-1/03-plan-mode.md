@@ -2,45 +2,50 @@
 
 Durasi ±15 menit. Di plan mode Claude hanya membaca dan menulis rencana. Berkas tidak berubah sampai kamu menyetujui. Rencana adalah titik di mana kamu menangkap salah paham, saat biayanya masih murah.
 
-Penting: di versi terbaru Claude Code, mode awal bisa Auto, yaitu Claude langsung bekerja tanpa meminta persetujuan pada tiap aksi. Karena itu kamu pindah ke plan mode sendiri.
+Penting: mode awal Claude Code bisa Auto, yaitu Claude langsung bekerja tanpa meminta persetujuan pada tiap aksi. Karena itu kamu pindah ke plan mode sendiri.
 
 ## Yang dikerjakan
 
-1. Pindah ke plan mode. **Tab Code:** buka selector mode di samping tombol kirim dan pilih **Plan**, atau tekan Cmd+Shift+M (macOS) atau Ctrl+Shift+M (Windows). Shift+Tab tidak berpindah mode di tab Code. **Terminal:** tekan **Shift+Tab** sampai tulisan mode di bawah kotak input menunjukkan plan, atau ketik `/plan`, atau jalankan `claude --permission-mode plan`.
-2. Ganti model ke **Opus 5.5** untuk rencana: tab Code lewat dropdown model di samping tombol kirim, terminal lewat `/model`.
+1. Pindah ke plan mode: buka selector mode di samping tombol kirim dan pilih **Plan**, atau tekan Cmd+Shift+M (macOS) atau Ctrl+Shift+M (Windows).
+2. Ganti model ke **Opus 5.5** lewat dropdown model di samping tombol kirim.
 3. Kirim prompt di bawah. Claude membaca referensi, mungkin mengajukan pertanyaan, lalu menyajikan rencana.
-4. Baca rencananya. Pakai daftar di bagian Cek. Di terminal, Ctrl+G membuka rencana di editor teks.
-5. Bila ada yang salah, pilih **lanjut merencanakan** dan beri feedback satu per satu. Jangan menyetujui rencana yang berisi fitur di luar BRD.
-6. Setujui dengan pilihan yang meminta persetujuan manual atas perubahan berkas (di tab Code: kembali ke mode **Manual**, supaya tiap perubahan muncul di diff view dengan tombol Accept dan Reject). Minta Claude menyimpan rencana sebagai `PLAN.md`.
+4. Baca rencananya dengan daftar di bagian Cek. Driver membaca, reviewer mencentang.
+5. Bila ada yang salah, jangan setujui. Balas dengan satu feedback, mis. "Hapus halaman login dari rencana, tidak ada di BRD." Ulangi sampai rencana benar.
+6. Setujui rencana. Bila ditanya cara melanjutkan, pilih yang tetap meminta persetujuanmu untuk tiap perubahan (mode **Manual**). Claude menyimpan rencana sebagai `PLAN.md`.
 
 ## Prompt
 
 ```
 CONTEXT
-Baca CLAUDE.md dan semua berkas di folder references. Tujuannya prototype HTML satu berkas untuk alur Create New Role di WebTM.
+Baca CLAUDE.md, BRD, dan desain Claude Design di folder references. Tujuannya prototype HTML satu berkas untuk Role Management WebTM, dengan alur utama Create New Role.
 
 TASK
-Susun rencana implementasi. Jangan mengubah berkas apa pun sebelum aku menyetujui.
+Susun rencana implementasi dan simpan sebagai PLAN.md setelah aku setujui. Jangan mengubah berkas lain sebelum aku menyetujui.
 
 RULES
-- Rencana mencakup: daftar screen yang dibuat (Daftar Role, Create New Role, tampilan setelah simpan), elemen tiap screen dengan ID requirement-nya, state yang dibuat (normal, kosong, loading, error nama duplikat), data contoh yang dipakai (tulis nilainya, ini data fiktif), dan urutan pengerjaan sebagai daftar tugas bernomor (tiap tugas satu tahap yang bisa diperiksa di browser).
-- Screen Role Members dan Change Log hanya dibuat bila sisa waktu ada. Tulis sebagai tahap terakhir yang opsional.
-- Hal yang BRD belum putuskan (mis. isi pesan nama duplikat, tampilan setelah simpan) masuk ke bagian Pertanyaan. Jangan memutuskannya sendiri.
+- Screen wajib: Daftar Role (RM-001), Create New Role dengan Role Status dan Role Permission (RM-004, RM-005, RM-006), dan tampilan setelah Submit.
+- Screen opsional, ditulis sebagai tahap terakhir: Role Members (RM-002), Edit Role (RM-007), Change Log Role (RM-003).
+- Untuk tiap screen: elemen dengan ID requirement, dan sumber tampilannya (desain atau BRD).
+- Tulis bagian "Selisih desain dan BRD": hal yang ada di desain tetapi tidak di BRD, atau sebaliknya.
+- State yang dibuat: loading saat Submit, error Role Name kosong, error Role Name sama dengan role Active, error Role Name sama dengan role Inactive.
+- Data contoh fiktif (tulis nilainya): minimal tiga role Active dan satu role Inactive.
+- Hal yang BRD belum putuskan (pesan validasi, default Role Status, tampilan setelah simpan) masuk bagian Pertanyaan. Jangan memutuskannya sendiri.
 - Tidak ada login, tidak ada hapus role, tidak ada fitur di luar BRD.
-- Tulis cara memeriksa hasil: langkah klik yang membuktikan alur berjalan.
+- Urutan pengerjaan sebagai tugas bernomor. Tiap tugas satu tahap yang bisa diperiksa di browser.
+- Tulis cara memeriksa: langkah klik yang membuktikan alur berjalan.
 
 OUTPUT FORMAT
-Rencana berbagian: Screen, Elemen dan ID, State, Data contoh, Urutan, Pertanyaan, Cara memeriksa.
+Rencana berbagian: Screen, Elemen dan ID, Selisih desain dan BRD, State, Data contoh, Urutan, Pertanyaan, Cara memeriksa.
 ```
 
 ## Cek
 
-- Setiap screen dan elemen punya ID requirement. Yang tidak punya ada di Pertanyaan.
-- State kosong, loading, dan error nama duplikat disebut.
+- Setiap screen dan elemen punya ID requirement. Yang tidak punya ada di Pertanyaan atau Selisih.
+- Tiga error Role Name disebut: kosong, sama dengan role Active, sama dengan role Inactive.
+- Data contoh punya minimal satu role Inactive (dipakai untuk menguji aturan RM-004).
 - Tidak ada login, hapus role, atau fitur lain di luar BRD.
-- Bagian Cara memeriksa berisi langkah klik yang konkret.
-- Urutan berupa tugas bernomor, bukan satu paragraf.
-- Berkas belum ada yang berubah sebelum kamu menyetujui.
+- Cara memeriksa berisi langkah klik yang konkret.
+- Belum ada berkas selain `PLAN.md` yang berubah.
 
 ---
 

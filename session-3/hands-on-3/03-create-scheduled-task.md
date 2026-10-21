@@ -1,31 +1,54 @@
 # Langkah 3: Buat scheduled task dan jalankan
 
-Durasi ±9 menit. Scheduled task adalah prompt yang dijalankan Claude sesuai jadwal atau sesuai permintaan. Kamu mengubah prompt brief menjadi task, mengatur frekuensi, lalu menjalankannya satu kali tanpa menunggu jadwal.
+Durasi ±9 menit. Scheduled task adalah prompt yang dijalankan Claude sesuai jadwal atau sesuai permintaan. Kamu menjadikan prompt brief dari Langkah 2 sebagai task harian, lalu menjalankannya sekali tanpa menunggu jadwal.
+
+Task tidak dipicu oleh MoM baru. Task berjalan per jadwal (di sini setiap hari kerja), dan setiap kali jalan ia membaca MoM bertanggal hari ini atau kemarin. Karena hanya memakai connector, task tetap berjalan walau komputermu mati.
 
 ## Yang dikerjakan
 
-1. Buka **Scheduled** di sidebar aplikasi Claude, klik **New task**, dan pilih mengisi manual. Cara lain: setelah brief di Langkah 2 memuaskan, minta Claude menjadikannya task lewat tombol **Schedule** di percakapan.
-2. Isi: nama `Brief Progres WebTM`, prompt dari bagian di bawah, frekuensi **Weekdays** (jam bebas), model **Sonnet 5.5**, dan mode persetujuan yang paling ketat yang ditawarkan (task ini hanya membaca). Bila diminta memilih folder, pilih folder `webtm-prototype`.
-3. Simpan, lalu jalankan sesuai permintaan (**Run now**). Bila run berhenti menunggu izin untuk Notion, buka sesinya dan setujui. Pilih izin tetap (always allow) khusus untuk tool baca Notion supaya run berikutnya tidak berhenti. Tunggu sampai selesai.
-4. Buka hasil run dari halaman task. Bandingkan dengan brief di Langkah 2: format sama, isi mengikuti backlog.
-5. Jangan memilih frekuensi yang membuat task berjalan saat kelas. Task ini berjalan dari jadwal besok pagi, bukan sekarang.
-
-Task yang hanya memakai connector berjalan tanpa komputer menyala. Task yang membaca berkas di komputermu hanya berjalan saat aplikasi terbuka dan komputer menyala.
+1. Buka **Scheduled** di sidebar aplikasi Claude desktop, klik **New task**. Bila muncul pilihan, pilih mengisi manual.
+2. Isi:
+   - Nama: `Brief Progres WebTM`
+   - Prompt: blok di bawah (ganti `[LINK BRD]` dulu)
+   - Frekuensi: **Weekdays**, jam 17.00
+   - Model: **Sonnet 5.5**
+   - Mode persetujuan: pilih yang meminta persetujuan (task ini hanya membaca)
+3. Simpan, lalu klik **Run now**.
+4. Run pertama biasanya berhenti menunggu izin untuk tool Notion dan Google Docs. Buka sesi run dari halaman task. Untuk tool **baca** (search, fetch), pilih izin tetap (always allow). Tool yang menulis atau membuat apa pun: tolak.
+5. Tunggu sampai selesai, lalu buka hasil run dari halaman task. Bandingkan dengan brief Langkah 2: format sama, angka sama, Catatan MoM "tidak ada MoM baru".
 
 ## Prompt task
 
+Ganti dulu: `[LINK BRD]`.
+
 ```
-Tulis brief progres proyek WebTM dari database "WebTM Backlog" di Notion. Hanya baca, jangan mengubah apa pun. Tiga bagian tetap: Progres (jumlah story per Status dengan Story ID, dan yang berubah), Prioritas minggu ini (maksimal tiga story dengan alasan), Hambatan (alasan, sumber Story ID, tindakan yang diminta). Yang tidak ada di backlog tulis "tidak ada data". Jangan menebak nama, tanggal, atau persentase. Maksimal 200 kata, bahasa Indonesia, dan awali dengan tanggal data diambil.
+CONTEXT
+Sumber: database "WebTM Backlog" dan "WebTM MoM" di halaman "WebTM" di Notion, dan BRD WebTM v1.1: [LINK BRD].
+
+TASK
+Tulis brief progres proyek WebTM dengan empat bagian tetap.
+
+RULES
+- Hanya baca: jangan membuat, mengubah, atau menghapus apa pun di Notion, Google Docs, atau tempat lain.
+- PROGRES: jumlah story per Status (Done, In Progress, Blocked, Backlog) dengan Story ID untuk tiap angka.
+- PRIORITAS MINGGU INI: maksimal tiga story, masing-masing dengan alasan satu kalimat.
+- HAMBATAN: alasan, sumber (Story ID, ID requirement, atau MoM), dan tindakan yang diminta dari peran apa.
+- CATATAN MOM: hanya halaman di WebTM MoM dengan Tanggal meeting hari ini atau kemarin. Untuk tiap poin yang berdampak: ID requirement dan Story ID terdampak, dan usulan perubahan BRD bila poin itu mengisi TBC atau menambah aturan. Poin yang bertentangan dengan BRD, atau keputusan yang masih sementara atau terbuka, ditulis sebagai pertanyaan, bukan usulan. Tanpa MoM baru tulis "tidak ada MoM baru".
+- Yang tidak ada di data ditulis "tidak ada data". Jangan menebak tanggal, nama orang, atau persentase.
+- Maksimal 300 kata, bahasa Indonesia. Awali dengan tanggal data diambil.
+
+OUTPUT FORMAT
+Brief dengan empat judul bagian. Akhiri dengan "Usulan menunggu persetujuan." 
 ```
 
 ## Cek
 
 - Task muncul di daftar **Scheduled** dengan nama, frekuensi, dan model yang benar.
 - Run sesuai permintaan selesai tanpa galat.
-- Brief hasil run punya tiga bagian dan angka yang cocok dengan Notion.
-- Task hanya membaca: tidak ada baris Notion yang berubah.
+- Brief hasil run punya empat bagian, angka cocok dengan Notion, dan Catatan MoM "tidak ada MoM baru".
+- Tidak ada yang berubah di Notion atau BRD.
 
 ---
 
 Sebelumnya: [Langkah 2: Tentukan format dan brief pertama](02-define-format-first-brief.md)  
-Berikutnya: [Langkah 4: Dampak MoM sebagai usulan dan iterasi](04-mom-impact-iterate.md)
+Berikutnya: [Langkah 4: MoM baru masuk, jalankan ulang, putuskan usulan](04-mom-impact-iterate.md)

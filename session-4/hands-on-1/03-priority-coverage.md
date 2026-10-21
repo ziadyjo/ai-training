@@ -14,7 +14,7 @@ Durasi ±10 menit. Claude mengusulkan prioritas, kamu yang memutuskan. Lalu kamu
 
 ```
 CONTEXT
-Test case di atas, dari requirement RM-001, RM-004, RM-005, dan RM-006.
+Test case di atas, dari requirement RM-001, RM-004, dan RM-005 dan flow Create New Role.
 
 TASK
 Tinjau prioritas dan coverage. Jangan mengubah isi test case.
@@ -32,7 +32,20 @@ Tabel prioritas (TC, prioritas, alasan), coverage matrix, daftar gap, daftar usu
 ## Prompt B: pilih untuk dijalankan
 
 ```
-Dari test case di atas, pilih 3 sampai 5 yang paling cocok dijalankan di prototype lewat browser. Syaratnya: prioritas Tinggi atau Sedang, langkahnya hanya klik dan ketik, dan expected-nya terlihat di layar. Urutkan dari yang paling sederhana. Beri alasan satu kalimat per pilihan. Jangan menjalankan apa pun.
+CONTEXT
+Test case v1 di chat ini, lengkap dengan prioritas.
+
+TASK
+Pilih 3 sampai 5 test case yang paling cocok dijalankan di prototype lewat browser. Jangan menjalankan apa pun.
+
+RULES
+- Prioritas Tinggi atau Sedang.
+- Langkahnya hanya klik dan ketik.
+- Expected-nya terlihat di layar.
+- Urutkan dari yang paling sederhana dan beri alasan satu kalimat per pilihan.
+
+OUTPUT FORMAT
+Daftar bernomor: ID test case dan alasan.
 ```
 
 ## Cek

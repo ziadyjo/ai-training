@@ -23,3 +23,4 @@
 | Defect | Satu ketidaksesuaian antara expected dan actual, dicatat lengkap dengan langkah reproduksi dan bukti |
 | Tingkat defect | Tinggi (fungsi inti gagal), Sedang (ada jalan keluar), Rendah (tampilan atau kenyamanan) |
 | Change note | Usulan perubahan BRD dari temuan uji. Hanya usulan sampai manusia menyetujuinya |
+| QA Report | Laporan satu halaman hasil pengujian: ringkasan, cakupan, hasil per test case, defect, bukti, dan usulan change note |

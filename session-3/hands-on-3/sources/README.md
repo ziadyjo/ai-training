@@ -2,8 +2,7 @@
 
 | Berkas | Dipakai di | Isi |
 |---|---|---|
-| [`progress-data.md`](progress-data.md) | Langkah 1 | Status story di akhir minggu fiktif |
-| [`sprint-review-mom.md`](sprint-review-mom.md) | Langkah 1 dan 4 | MoM sprint review fiktif untuk dicek dampaknya |
-| [`brief-format.md`](brief-format.md) | Langkah 2 dan 3 | Format brief tiga bagian |
+| [`progress-data.md`](progress-data.md) | Langkah 1 | Status story di akhir minggu ke-2 sprint |
+| [`brief-format.md`](brief-format.md) | Langkah 2 dan 3 | Format brief empat bagian |
 
-Semua data fiktif.
+MoM lama dan MoM Review BRD untuk demo case ada di halaman WebTM Notion (dari [`notion-webtm`](../../hands-on-2/sources/notion-webtm/README.md)). Semua data fiktif.

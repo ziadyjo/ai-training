@@ -1,6 +1,6 @@
 # Sesi 4: Test Cases & Agentic Testing
 
-Dua hands-on: membangun Skill `qa-test` lalu menyusun test case berprioritas dari BRD, dan menjalankan satu test case di prototype lewat Claude in Chrome sampai ada bukti, defect, dan catatan hasil. Memakai BRD dari Sesi 1 dan prototype dari Sesi 3.
+Dua hands-on: membangun Skill `qa-test` lalu menyusun test case berprioritas dari BRD, dan menjalankan test case di prototype lewat Claude in Chrome sampai ada bukti, defect, dan QA Report. Memakai BRD v1.1 dan flow Miro dari Sesi 1 dan 2, mockup Claude Design dari Sesi 2, dan prototype dari Sesi 3.
 
 Setiap folder hands-on berisi langkah-langkahnya dan folder `sources/` dengan berkas yang dipakai di hands-on itu.
 
@@ -13,9 +13,10 @@ Setiap folder hands-on berisi langkah-langkahnya dan folder `sources/` dengan be
 
 ## Yang perlu siap
 
-- BRD hasil Sesi 1 di Google Docs, dengan ID requirement. Bila tertinggal: [`BRD acuan`](../session-1/hands-on-3/sources/brd-v1-1-checkpoint.md).
-- Referensi tambahan (opsional): [`Reference BRD Role Management`](../session-2/reference-brd-role-management.md) untuk cek silang expected result. BRD utamamu tetap hasil Sesi 1.
-- Prototype `index.html` dari Sesi 3. Bila tertinggal: minta prototype acuan ke instruktur. Simpan di folder yang mudah kamu temukan.
+- BRD v1.1 di Google Docs, dengan ID requirement RM-001 sampai RM-007. Bila tertinggal: [`BRD v1.1 acuan`](../session-3/hands-on-1/sources/brd-v1-1.pdf).
+- Board Miro dengan flow Create New Role dari Sesi 2, dan connector Miro yang masih tersambung. Bila tidak ada: pakai ringkasan flow di bagian 6 BRD.
+- Screenshot mockup Claude Design (Daftar Role dan Create New Role), untuk expected result tampilan. Bila tertinggal: [`mockup acuan`](../session-3/hands-on-1/sources/mockup-acuan/).
+- Folder `webtm-prototype` dari Sesi 3 dengan `index.html`. Bila tertinggal: minta prototype acuan ke instruktur.
 - Browser **Google Chrome**. Claude in Chrome tersedia di semua paket berbayar, jadi akun Claude Pro cukup.
 - Project **WebTM Role & User Management** dari Sesi 1 dengan connector Google Docs yang tersambung.
 - Disarankan: satu profil Chrome terpisah tanpa login ke akun kerja, bank, atau layanan pribadi. Claude in Chrome ikut memakai status login browser yang dipakai.

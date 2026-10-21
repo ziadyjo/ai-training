@@ -6,8 +6,8 @@ Kamu menyiapkan Claude in Chrome, menjalankan satu test case dari Hands-on #1 di
 |---|---|
 | Durasi | 90 menit |
 | Model | Sonnet 5.5 untuk menyusun catatan hasil. Claude in Chrome memakai pilihan model di side panel-nya |
-| Jalur | Utama: Claude in Chrome (side panel) dengan mode Manually approve. Alternatif: `claude --chrome` dari Claude Code. Cadangan: jalur manual, kamu menjalankan langkah sendiri dan `qa-run` menyusun catatannya |
-| Hasil | Satu test case dieksekusi sampai laporan, execution record dan defect record dengan bukti, Cek mutu execution record (N dari 6), usulan change note, scorecard v1 dan v2 |
+| Jalur | Utama: Claude in Chrome (side panel) dengan mode Manually approve. Alternatif: nyalakan dari aplikasi Claude desktop (Settings, Connectors). Cadangan: jalur manual, kamu menjalankan langkah sendiri dan `qa-run` menyusun catatannya |
+| Hasil | Satu test case dieksekusi sampai laporan, **QA Report** (execution record, defect record dengan bukti, usulan change note), Cek mutu execution record (N dari 6), scorecard v1 dan v2 |
 
 Agentic testing di browser masih berkembang. Targetnya realistis: setup, satu test case sampai laporan, lalu satu iterasi. Dua test case dan satu defect adalah target lanjutan.
 
@@ -20,7 +20,7 @@ Agentic testing di browser masih berkembang. Targetnya realistis: setup, satu te
 | 3 | Jalankan test case pertama | [03-run-first-test-case.md](03-run-first-test-case.md) | ±25 |
 | 4 | Bandingkan, bukti, dan defect | [04-compare-evidence-defects.md](04-compare-evidence-defects.md) | ±15 |
 | 5 | Iterasi: test case kedua atau aturan lebih ketat | [05-iterate-second-run.md](05-iterate-second-run.md) | ±15 |
-| 6 | Konsolidasi dan change note | [06-consolidate-change-note.md](06-consolidate-change-note.md) | ±10 |
+| 6 | Konsolidasi dan QA Report | [06-consolidate-qa-report.md](06-consolidate-qa-report.md) | ±10 |
 
 ## Cek mutu execution record
 
@@ -40,6 +40,7 @@ Enam pemeriksaan tetap. Dipakai di Langkah 4 (v1) dan Langkah 5 (v2). Skor: juml
 1. Klik tombol salin di pojok kanan blok kode. Satu blok adalah satu prompt.
 2. Ganti teks dalam kurung siku, misalnya `[ALAMAT PROTOTYPE]`, sebelum mengirim.
 3. Tiap prompt bertanda tempat kirimnya: side panel Claude in Chrome, atau chat Claude di Project WebTM.
+4. Prompt memakai label huruf besar: CONTEXT, TASK, RULES, OUTPUT FORMAT. Pertahankan labelnya saat kamu mengganti teks di dalamnya.
 
 ## Tertinggal?
 
@@ -53,6 +54,7 @@ Minta berkas acuan ke instruktur. Hasilmu akan berbeda dari acuan: pakai acuan u
 - [ ] Expected dan actual dibandingkan per langkah, dengan bukti untuk tiap klaim.
 - [ ] Defect (bila ada) lengkap dan bisa direproduksi orang lain.
 - [ ] [Scorecard](../scorecard.md) v1 dan v2 untuk execution record terisi.
+- [ ] QA Report satu halaman memuat hasil, defect, bukti, dan cakupan.
 - [ ] Temuan menjadi usulan change note. BRD tidak diubah langsung.
 
 ## Kalau bermasalah
@@ -61,7 +63,7 @@ Minta berkas acuan ke instruktur. Hasilmu akan berbeda dari acuan: pakai acuan u
 |---|---|
 | Ikon Claude tidak ada di toolbar Chrome | Klik ikon puzzle di Chrome lalu pin ekstensi Claude. Bila ekstensi belum ada, pasang dari Chrome Web Store dan masuk dengan akun Claude yang sama |
 | Side panel meminta masuk atau upgrade | Claude in Chrome butuh paket berbayar dan akun yang sama dengan aplikasi Claude. Masuk ulang di ekstensi |
-| Claude menjawab tidak bisa mengakses halaman prototype | Buka `chrome://extensions`, pilih Detail pada ekstensi Claude, dan aktifkan **Allow access to file URLs**. Muat ulang tab. Alternatif: minta Claude Code menjalankan server lokal di folder prototype dan buka alamat localhost-nya |
+| Claude menjawab tidak bisa mengakses halaman prototype | Buka `chrome://extensions`, pilih Detail pada ekstensi Claude, dan aktifkan **Allow access to file URLs**. Muat ulang tab. Bila tetap gagal: buka `index.html` di Browser pane tab Code dan pakai jalur manual dengan `qa-run` |
 | Claude bekerja di tab atau situs lain | Hentikan segera. Tutup tab itu, lalu ulangi dengan alamat prototype di prompt dan aturan "hanya di tab ini" |
 | Claude tidak berhenti saat langkah tidak cocok | Hentikan di side panel (atau tutup tab prototype). Ulangi dengan satu test case dan tempel aturan dari `sources/execution-rules-paste.md` |
 | Skill `qa-run` tidak diikuti di side panel | Tempel isi `sources/execution-rules-paste.md` di awal prompt. Skill tetap dipakai di chat Project untuk menyusun catatan |

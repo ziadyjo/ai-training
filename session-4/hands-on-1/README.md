@@ -1,12 +1,13 @@
 # Hands-on #1: Test Case Skill & Test Case Development
 
-Kamu membangun Skill `qa-test` dari starter, memakainya untuk menyusun test case dari requirement BRD, memeriksa prioritas dan coverage, lalu memperbaiki Skill-nya dengan satu aturan dan membuktikan hasilnya naik. Berkas yang dipakai ada di [`sources/`](sources/).
+Kamu membangun Skill `qa-test` dari starter, memakainya untuk menyusun test case dari requirement BRD, flow Miro, dan mockup Claude Design, memeriksa prioritas dan coverage, lalu memperbaiki Skill-nya dengan satu aturan dan membuktikan hasilnya naik. Berkas yang dipakai ada di [`sources/`](sources/).
 
 | | |
 |---|---|
 | Durasi | 60 menit |
 | Model | Sonnet 5.5 untuk menyusun test case. Opus 5.5 hanya bila perlu menimbang coverage atas banyak requirement |
-| Jalur | Chat Claude di Project WebTM, membaca BRD lewat connector Google Docs |
+| Jalur | Chat Claude di Project WebTM, membaca BRD lewat connector Google Docs dan flow lewat connector Miro |
+| Input | BRD v1.1 (RM-001, RM-004, RM-005), board Miro flow Create New Role, screenshot mockup Daftar Role dan Create New Role |
 | Hasil | Skill `qa-test` v2, 8 sampai 12 test case berprioritas dengan coverage matrix, Cek mutu test case (N dari 6), scorecard v1 dan v2 |
 
 ## Urutan langkah
@@ -37,6 +38,7 @@ Enam pemeriksaan tetap. Dipakai di Langkah 4 (v1) dan Langkah 5 (v2). Skor: juml
 1. Klik tombol salin di pojok kanan blok kode. Satu blok adalah satu prompt.
 2. Ganti teks dalam kurung siku, misalnya `[LINK BRD]`, sebelum mengirim.
 3. Di kotak chat, tekan Shift+Enter untuk pindah baris. Prompt yang diawali `/` harus berada di baris pertama.
+4. Prompt memakai label huruf besar: CONTEXT, TASK, RULES, OUTPUT FORMAT. Pertahankan labelnya saat kamu mengganti teks di dalamnya.
 
 ## Tertinggal?
 
@@ -56,7 +58,8 @@ Minta berkas acuan ke instruktur. Hasilmu akan berbeda dari acuan: pakai acuan u
 | Masalah | Jalan keluar |
 |---|---|
 | Skill tidak muncul saat mengetik `/qa` | Periksa di **Customize**, tab **Skills**, bahwa `qa-test` aktif. Mulai chat baru di Project WebTM. Bila tetap tidak terpanggil, tulis "Gunakan Skill qa-test" di prompt |
-| Claude tidak bisa membaca BRD | Pastikan connector Google Docs masih Connected, atau lampirkan BRD acuan dan sebut "BRD terlampir" |
+| Claude tidak bisa membaca BRD | Pastikan connector Google Docs masih Connected, atau lampirkan `brd-v1-1.pdf` dan sebut "BRD terlampir" |
+| Claude tidak bisa membaca board Miro | Pastikan connector Miro masih Connected dan board bisa dibuka akunmu. Miro Free dibatasi 100 panggilan per hari. Bila gagal, hapus baris Flow dari prompt dan sebut "pakai ringkasan flow di bagian 6 BRD" |
 | Test case terlalu banyak atau tentang fitur yang tidak ada | Batasi ke 3 sampai 6 requirement dan sebut ID-nya. Hapus test case tanpa dasar, jangan dipertahankan karena terlihat bagus |
 | Expected result berbunyi "berfungsi dengan baik" | Minta Claude menulis ulang expected sebagai teks, elemen, atau data yang tampak di layar |
 | Claude mengarang isi pesan error | Pesan yang masih TBC di BRD cukup ditulis "pesan tampil". Isinya masuk daftar pertanyaan |

@@ -9,9 +9,9 @@ Durasi ±15 menit. Claude in Chrome menjalankan Claude di dalam browsermu, jadi 
 3. Klik ikon Claude di toolbar untuk membuka side panel. Di drop-down pada kotak input pilih mode **Manually approve**, supaya Claude meminta izin untuk tiap aksi.
 4. Buka prototype-mu di tab Chrome: tarik `index.html` ke jendela Chrome, atau **File**, **Open File**. Alamatnya diawali `file://`.
 5. Kirim prompt cek koneksi di bawah ke side panel. Claude hanya boleh membaca dan menjawab.
-6. Bila Claude menjawab tidak bisa mengakses halaman: buka `chrome://extensions`, pilih **Detail** pada ekstensi Claude, aktifkan **Allow access to file URLs**, lalu muat ulang tab. Alternatif: minta Claude Code menjalankan server lokal di folder prototype dan buka alamat localhost yang diberikan.
+6. Bila Claude menjawab tidak bisa mengakses halaman: buka `chrome://extensions`, pilih **Detail** pada ekstensi Claude, aktifkan **Allow access to file URLs**, lalu muat ulang tab. Bila tetap gagal: buka `index.html` di Browser pane tab Code, jalankan langkah sendiri, dan pakai jalur manual dengan `qa-run`.
 
-Claude in Chrome juga bisa dijalankan dari Claude Code dengan `claude --chrome` (ketik `/chrome` untuk memeriksa koneksi). Itu jalur alternatif: langkah dan aturannya sama.
+Claude in Chrome juga bisa dinyalakan dari aplikasi Claude desktop (**Settings**, **Connectors**, Claude in Chrome). Itu jalur alternatif: langkah dan aturannya sama.
 
 ## Prompt (kirim ke side panel)
 

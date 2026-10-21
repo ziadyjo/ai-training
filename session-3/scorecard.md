@@ -36,8 +36,8 @@ v1 dari tabel backlog di chat (Langkah 2). v2 setelah review dependency (Langkah
 | v1 |  |  |  |  |
 | v2 |  |  |  |  |
 
-v1 dari brief pertama (Langkah 2). v2 setelah feedback dan setelah tugas terjadwal dijalankan ulang (Langkah 4).
+v1 dari brief pertama di chat (Langkah 2). v2 dari run task setelah MoM baru masuk dan satu aturan ditambahkan ke prompt task (Langkah 4).
 
 ## Pola yang diharapkan
 
-Cek mutu naik dari v1 ke v2 karena satu temuan spesifik diperbaiki. Angka peserta akan berbeda. Yang penting adalah kamu bisa menunjuk prompt atau feedback yang menyebabkan perubahannya. Kalau angka turun, batalkan perubahan yang tidak terkait (di Claude Code: `Esc` dua kali atau `/rewind`).
+Cek mutu naik dari v1 ke v2 karena satu temuan spesifik diperbaiki. Angka peserta akan berbeda. Yang penting adalah kamu bisa menunjuk prompt atau feedback yang menyebabkan perubahannya. Kalau angka turun, batalkan perubahan yang tidak terkait (di tab Code: `/rewind` atau tolak di diff view).

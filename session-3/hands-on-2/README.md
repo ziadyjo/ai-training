@@ -1,13 +1,13 @@
 # Hands-on #2: Project Planning & Backlog Development
 
-Kamu menyusun user story dari requirement BRD, memeriksa mutunya, menyimpannya sebagai backlog di Notion lewat connector, lalu memperbaiki dependency-nya. Berkas yang dipakai ada di [`sources/`](sources/).
+Kamu menyiapkan halaman **WebTM** di Notion, menyusun user story dari requirement BRD v1.1, memeriksa mutunya, menyimpannya sebagai backlog di Notion lewat connector, lalu memperbaiki dependency-nya. Berkas yang dipakai ada di [`sources/`](sources/).
 
 | | |
 |---|---|
 | Durasi | 30 menit |
 | Model | Sonnet 5.5. Opus 5.5 hanya bila dependency antar story rumit |
 | Jalur | Utama: Notion lewat connector di chat Claude. Alternatif: Google Docs (tabel di dokumen) |
-| Hasil | Backlog 8 sampai 12 story di Notion (atau Google Docs), Cek mutu backlog (N dari 6), scorecard v1 dan v2 |
+| Hasil | Halaman WebTM di Notion berisi database WebTM MoM dan WebTM Backlog (8 sampai 12 story), Cek mutu backlog (N dari 6), scorecard v1 dan v2 |
 
 ## Urutan langkah
 
@@ -24,7 +24,7 @@ Enam pemeriksaan tetap, dipakai di Langkah 2 (v1) dan Langkah 4 (v2). Skor: juml
 
 | No | Pemeriksaan |
 |---|---|
-| 1 | Setiap story punya ID requirement sumber (RM-xxx atau AC-xxx) |
+| 1 | Setiap story punya ID requirement sumber (RM-xxx) |
 | 2 | Format "Sebagai [peran], saya ingin [tujuan], supaya [manfaat]" lengkap |
 | 3 | Minimal dua acceptance criteria per story, tiap butir bisa dijawab ya atau tidak |
 | 4 | Priority (Must, Should, Could) dan Size (S, M, L) terisi |
@@ -37,6 +37,7 @@ Enam pemeriksaan tetap, dipakai di Langkah 2 (v1) dan Langkah 4 (v2). Skor: juml
 2. Ganti teks dalam kurung siku, misalnya `[LINK BRD]`, sebelum mengirim.
 3. Di kotak chat, tekan Shift+Enter untuk pindah baris.
 4. Semua prompt di hands-on ini dikirim di chat Claude di dalam Project WebTM, bukan di Claude Code.
+5. Prompt memakai label huruf besar: CONTEXT, TASK, RULES, OUTPUT FORMAT. Pertahankan labelnya saat kamu mengganti teks di dalamnya.
 
 ## Tertinggal?
 
@@ -57,7 +58,8 @@ Minta berkas acuan ke instruktur. Hasilmu akan berbeda dari acuan: pakai acuan u
 |---|---|
 | Notion tidak ada di daftar connector | Cek Customize lalu Connectors. Bila paket Notion-mu tidak mengizinkan, pakai Google Docs |
 | Halaman izin Notion menolak | Connector bekerja dengan izin akunmu sendiri. Pakai akun Notion pribadi (bukan akun tamu di workspace orang lain) dan pilih halaman yang boleh diakses |
-| Claude tidak menemukan halaman Notion | Pilih halaman induk saat memberi izin, atau buat halaman kosong bernama `WebTM Backlog` lebih dulu |
+| Claude tidak menemukan halaman Notion | Pastikan judulnya persis `WebTM`, bukan "WebTM (1)". Buka Notion, halaman **WebTM**, menu **...**, **Connections**, lalu tambahkan Claude. Atau ulangi Connect dan pilih halaman WebTM saat memberi izin |
+| [Template Notion WebTM](https://proximal-tray-c79.notion.site/WebTM-400514a7b02481c38703dda28d8824b0) tidak bisa diduplikat | Pakai Cara B: Prompt C di Langkah 1 membuat halaman WebTM dan tiga MoM lewat connector |
 | Database terbuat, tetapi properti kurang | Kirim Prompt perbaikan di Langkah 3: sebut properti yang kurang |
 | Story terlalu banyak atau terlalu besar | Minta Claude memecah story yang Size-nya L, atau memangkas ke 12 teratas berdasarkan Priority |
 | Claude menulis story berisi tebakan untuk requirement TBC | Hapus story itu dan pindahkan ke Pertanyaan. Kirim Prompt iterasi di Langkah 4 |

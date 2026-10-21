@@ -12,7 +12,18 @@ Durasi ±8 menit. Backlog dibuat sebagai tabel di chat lebih dulu. Kamu memeriks
 ## Prompt
 
 ```
-Ubah user story tadi menjadi tabel backlog di chat dengan kolom: Story ID, Title, User Story, Acceptance Criteria, Requirement ID, Priority (Must, Should, Could), Size (S, M, L), Dependency (ID story lain atau "tidak ada"), Status (semua "Backlog"), Sprint (kosong). Jangan menulis ke Notion. Di bawah tabel tambahkan Cek mutu backlog: nilai tiap dari 6 pemeriksaan (lolos atau tidak, dengan alasan satu kalimat) dan jumlahnya N dari 6.
+CONTEXT
+User story dari langkah sebelumnya di chat ini. Skema backlog: Story ID, Title, User Story, Acceptance Criteria, Requirement ID, Priority, Size, Dependency, Status, Sprint.
+
+TASK
+Ubah user story tadi menjadi tabel backlog di chat, lalu nilai tabelnya dengan Cek mutu backlog. Jangan menulis ke Notion.
+
+RULES
+- Kolom: Story ID, Title, User Story, Acceptance Criteria, Requirement ID, Priority (Must, Should, Could), Size (S, M, L), Dependency (ID story lain atau "tidak ada"), Status (semua "Backlog"), Sprint (kosong).
+- Di bawah tabel, nilai tiap dari 6 pemeriksaan Cek mutu backlog: lolos atau tidak, dengan alasan satu kalimat.
+
+OUTPUT FORMAT
+Tabel backlog, lalu tabel Cek mutu dengan jumlah N dari 6.
 ```
 
 ## Cek

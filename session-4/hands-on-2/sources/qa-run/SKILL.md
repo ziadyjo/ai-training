@@ -1,6 +1,6 @@
 ---
 name: qa-run
-description: Dipakai saat test case sudah ada dan analis akan menjalankannya di prototype, lewat Claude in Chrome atau dengan catatan manual, lalu perlu hasilnya dicatat. Mengatur cara eksekusi (satu test case per giliran, batas aksi, bukti per langkah), membandingkan expected dan actual, dan menyusun execution record, defect record, serta Cek mutu. Tidak dipakai untuk menyusun test case baru.
+description: Dipakai saat test case sudah ada dan analis akan menjalankannya di prototype, lewat Claude in Chrome atau dengan catatan manual, lalu perlu hasilnya dicatat. Mengatur cara eksekusi (satu test case per giliran, batas aksi, bukti per langkah), membandingkan expected dan actual, dan menyusun execution record, defect record, Cek mutu, serta QA Report. Tidak dipakai untuk menyusun test case baru.
 ---
 
 # QA Run
@@ -67,6 +67,16 @@ Defect record, satu tabel per defect:
 | Bukti | nama berkas |
 
 Setelah itu: konsolidasi (satu paragraf dan jumlah per hasil), Cek mutu execution record, dan usulan change note bila ada defect.
+
+QA Report, bila analis meminta konsolidasi akhir. Satu halaman, urutan tetap:
+1. **Ringkasan:** jumlah test case per hasil (Lulus, Gagal, Terblokir), jumlah defect, satu kalimat kesimpulan.
+2. **Cakupan:** test case dan requirement yang diuji, dan yang belum beserta alasannya.
+3. **Hasil per test case:** ID, judul, hasil, ID defect bila ada.
+4. **Defect:** ID, judul, tingkat, asal (Prototype atau Requirement), tindak lanjut.
+5. **Bukti:** label bukti per test case.
+6. **Usulan change note:** hanya untuk defect berasal Requirement. ID requirement, bunyi sekarang, usulan, dasar.
+7. **Pertanyaan**, lalu kalimat "Usulan ini menunggu persetujuan manusia."
+
 
 ## Contoh singkat
 Test case TC-003, token kedaluwarsa. Langkah 4: membuka link lama.

@@ -13,7 +13,18 @@ Durasi ±5 menit. Dependency yang salah membuat sprint salah urut. Kamu minta Cl
 ## Prompt review
 
 ```
-Baca database "WebTM Backlog" di Notion. Periksa dependency: sebutkan story yang membutuhkan story lain tetapi kolom Dependency-nya "tidak ada", dan story Must yang bergantung pada story Could. Jangan mengubah apa pun. Tampilkan sebagai tabel: Story ID, masalah, saran perbaikan.
+CONTEXT
+Database "WebTM Backlog" di Notion berisi backlog yang baru dikirim.
+
+TASK
+Periksa dependency di database itu. Jangan mengubah apa pun.
+
+RULES
+- Sebutkan story yang membutuhkan story lain tetapi kolom Dependency-nya "tidak ada".
+- Sebutkan story Must yang bergantung pada story Could.
+
+OUTPUT FORMAT
+Tabel: Story ID, masalah, saran perbaikan.
 ```
 
 ## Prompt iterasi
@@ -21,7 +32,17 @@ Baca database "WebTM Backlog" di Notion. Periksa dependency: sebutkan story yang
 Ganti dulu: `[TEMUAN]`.
 
 ```
-Perbaiki satu hal di database "WebTM Backlog": [TEMUAN]. Ubah hanya baris yang disebut. Setelah selesai, sebutkan baris yang berubah dan nilai sebelum dan sesudahnya.
+CONTEXT
+Database "WebTM Backlog" di Notion. Temuan dari review dependency: [TEMUAN].
+
+TASK
+Perbaiki satu hal di database itu sesuai temuan.
+
+RULES
+- Ubah hanya baris yang disebut.
+
+OUTPUT FORMAT
+Baris yang berubah, dengan nilai sebelum dan sesudah.
 ```
 
 ## Cek

@@ -1,52 +1,36 @@
-# Langkah 4: Dampak MoM sebagai usulan dan iterasi
+# Langkah 4: MoM baru masuk, jalankan ulang, putuskan usulan
 
-Durasi ±7 menit. Catatan meeting sering mengubah requirement. Claude boleh menemukan dampaknya, tetapi perubahan BRD tetap keputusan manusia. Hasilnya berupa usulan, bukan penulisan langsung.
+Durasi ±8 menit. Ini demo case-nya: meeting review BRD v1.1 baru selesai dan MoM-nya masuk ke Notion. Task yang sama dijalankan ulang dan menangkap keputusan meeting serta dampaknya terhadap backlog dan BRD. Claude boleh menemukan dampaknya, tetapi perubahan BRD tetap keputusan manusia.
 
 ## Yang dikerjakan
 
-1. Kirim Prompt usulan dengan isi [`sprint-review-mom.md`](sources/sprint-review-mom.md). Claude membaca BRD lewat connector dan membandingkannya dengan MoM.
-2. Periksa usulan: tiap butir menyebut ID requirement, bunyi BRD sekarang, bunyi usulan, dan alasan dari poin MoM. BRD tidak berubah.
-3. Setujui atau tolak tiap butir dengan jelas. Perubahan yang kamu setujui diterapkan olehmu atau lewat permintaan terpisah.
-4. Pilih satu temuan dari brief (Langkah 2 atau 3), kirim Prompt iterasi, jalankan lagi task sesuai permintaan, lalu isi scorecard v2.
-5. Catat apakah dampak MoM terhadap backlog (story yang berubah atau Blocked) perlu masuk ke brief minggu depan.
+1. Buka Notion, database **WebTM MoM**, halaman **MoM Review BRD WebTM Role Management v1.1**. Isi **Tanggal meeting** dengan tanggal hari ini. Sekarang MoM ini terhitung MoM baru.
+2. Buka task `Brief Progres WebTM` di **Scheduled**, klik **Run now**.
+3. Baca bagian Catatan MoM di hasil run bersama reviewer:
+   - MoM Kickoff dan Sprint Planning tidak muncul (lebih lama dari kemarin).
+   - Keputusan yang mengisi TBC jadi usulan dengan ID requirement dan Story ID: default Role Status Active dan field mandatory (RM-004), default permission None (RM-005), Admin View Only di Role Management (8.2), permission berlaku saat login berikutnya (RM-007).
+   - Keputusan sementara atau terbuka jadi pertanyaan, bukan usulan: format Role ID "ROL-" (menunggu Backend), pesan validasi (menunggu PO), entrypoint Change Log lewat Role Details (perlu konfirmasi PO, Role Details tidak ada di BRD).
+   - Action item yang menghambat story masuk Hambatan, mis. mapping Change Log (S-08 tetap Blocked).
+4. Putuskan tiap usulan: tulis "setuju" atau "tolak" dengan alasan satu kalimat di catatanmu. Task tidak mengubah BRD. Usulan yang kamu setujui diterapkan olehmu sendiri, di luar hands-on ini.
+5. Iterasi: ambil satu temuan dari Cek mutu (Langkah 2 atau run ini). Buka task, klik **Edit**, tambahkan satu kalimat aturan ke prompt, simpan, lalu **Run now** lagi.
+6. Isi Cek mutu brief di scorecard baris v2.
 
-## Prompt usulan
+## Contoh aturan iterasi (tambahkan ke prompt task)
 
-Ganti dulu: `[LINK BRD]` dan `[TEMPEL MOM]`.
-
-```
-CONTEXT
-BRD WebTM: [LINK BRD]. MoM sprint review ada di bawah.
-
-TASK
-Bandingkan MoM dengan BRD. Daftar requirement yang terdampak sebagai USULAN perubahan. Jangan menulis atau mengubah apa pun di BRD, Notion, atau berkas lain.
-
-RULES
-- Tiap butir: ID requirement, bunyi BRD sekarang, bunyi usulan, poin MoM sebagai dasar, dan dampak ke backlog (Story ID).
-- Hanya butir yang didukung langsung oleh poin MoM. Jangan menambah usulan dari dugaan.
-- Bila MoM bertentangan dengan BRD tanpa penjelasan, tandai sebagai pertanyaan, bukan usulan.
-- Akhiri dengan: "Usulan ini menunggu persetujuan manusia."
-
-OUTPUT FORMAT
-Tabel: ID requirement, bunyi sekarang, usulan, dasar MoM, dampak backlog. Lalu daftar pertanyaan.
-
-[TEMPEL MOM]
-```
-
-## Prompt iterasi
-
-```
-Perbaiki satu hal di brief: [TEMUAN]. Ubah hanya bagian itu dan pertahankan format tiga bagian. Sebutkan baris yang berubah dan Story ID sumbernya.
-```
+- "Untuk tiap usulan, tulis juga bunyi BRD sekarang dan bunyi usulan."
+- "Keputusan berstatus sementara atau terbuka ditulis sebagai pertanyaan, bukan usulan."
+- "Diskusi improvement BRD yang masih berstatus Diskusi tidak dijadikan usulan."
+- "Batasi Catatan MoM maksimal tujuh butir, urut dari yang berdampak ke story Must."
 
 ## Cek
 
-- BRD tidak berubah (cek riwayat versi Google Docs).
-- Tiap usulan punya dasar poin MoM. Tidak ada usulan dari dugaan.
-- Pertentangan tanpa penjelasan masuk pertanyaan.
-- Cek mutu brief v2 lebih tinggi atau sama dengan v1 dan kamu bisa menunjuk penyebabnya.
-- Scorecard v2 terisi.
+- Run kedua memuat Catatan MoM dari MoM Review BRD saja.
+- Format Role ID dan pesan validasi ditulis sebagai pertanyaan, bukan usulan.
+- Tiap usulan punya dasar keputusan atau hasil pembahasan di MoM. Tidak ada usulan dari dugaan.
+- BRD dan Notion tidak berubah oleh task (cek Version history Google Docs bila ragu).
+- Satu aturan, satu perubahan di prompt task. Cek mutu brief v2 lebih tinggi atau sama dengan v1 dan kamu bisa menunjuk penyebabnya.
 
 ---
 
-Sebelumnya: [Langkah 3: Buat scheduled task dan jalankan](03-create-scheduled-task.md)
+Sebelumnya: [Langkah 3: Buat scheduled task dan jalankan](03-create-scheduled-task.md)  
+Selesai. Isi [scorecard](../scorecard.md) dan cek Kriteria lulus di [README](README.md).

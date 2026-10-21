@@ -4,7 +4,7 @@ Durasi ±8 menit. Kamu tidak menilai test case dari kesan pertama, tetapi dari e
 
 ## Yang dikerjakan
 
-1. Baca bagian **Cek mutu test case** hasil Claude. Bandingkan dengan pemeriksaanmu sendiri memakai [daftar di README](README.md#cek-mutu-test-case): Claude tidak boleh memberi lulus pada hal yang jelas kurang. Cek silang juga expected result tiga test case dengan RM-003 sampai RM-005 di [Reference BRD Role Management](../../session-2/reference-brd-role-management.md); selisih yang valid jadi temuan.
+1. Baca bagian **Cek mutu test case** hasil Claude. Bandingkan dengan pemeriksaanmu sendiri memakai [daftar di README](README.md#cek-mutu-test-case): Claude tidak boleh memberi lulus pada hal yang jelas kurang. Cek silang juga dengan flow Miro: setiap cabang keputusan dan exception punya test case atau tercatat sebagai gap.
 2. Isi [scorecard](../scorecard.md) baris v1: Cek mutu, test case tanpa dasar, dan hal yang kurang.
 3. Kirim Prompt di bawah bila kamu ingin Claude menunjukkan test case yang melanggar tiap pemeriksaan.
 4. Pilih satu temuan paling penting untuk Langkah 5. Temuan yang biasa muncul: requirement dengan aturan belum punya skenario negatif, expected terlalu umum, atau requirement yang belum punya test case.
@@ -12,7 +12,17 @@ Durasi ±8 menit. Kamu tidak menilai test case dari kesan pertama, tetapi dari e
 ## Prompt
 
 ```
-Periksa tabel test case di atas dengan enam pemeriksaan Cek mutu test case. Untuk tiap pemeriksaan yang gagal, sebut TC atau ID requirement yang melanggar dan satu perbaikan yang diusulkan. Jangan mengubah tabel.
+CONTEXT
+Tabel test case di chat ini.
+
+TASK
+Periksa tabel dengan enam pemeriksaan Cek mutu test case. Jangan mengubah tabel.
+
+RULES
+- Untuk tiap pemeriksaan yang gagal, sebut TC atau ID requirement yang melanggar dan satu perbaikan yang diusulkan.
+
+OUTPUT FORMAT
+Tabel: pemeriksaan, hasil, TC atau ID yang melanggar, perbaikan.
 ```
 
 ## Cek
